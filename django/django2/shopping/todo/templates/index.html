@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Lista</h1>
+    <a href="{% url 'todo.create_form' %}">Crear</a>
+    
+
+      <form action={% url 'todo.add' %} method="POST">
+        {% csrf_token %}
+        <label for="">Titulo</label>
+        <input name="title" type="text"><br>
+        <label for="">Descripcion</label>
+        <input name="description" type="text"><br>
+        <label for="">Completado</label>
+        <input name="completed" type="checkbox"><br>
+
+        <input type="submit" value="create">
+      </form>
+
+{% comment %} 
+      <ul>
+      {% for task in tasks %}
+        <li>{{ task.title }}</li>
+      {% endfor %}
+
+      </ul> {% endcomment %}
+
+      <table>
+        <tr>
+            <th>nombre</th>
+            <th>descripcion</th>
+            <th>completado</th>
+            <th>botones</th>
+        </tr>
+
+        {% for task in tasks %}
+          <tr>
+            <td>{{ task.title }}</td>
+            <td>{{ task.description }}</td>
+            {% comment %} <td>{{ task.completed }}</td> {% endcomment %}
+            
+        <tr>
+
+        {% endfor %}
+
+
+      </table>
+  
+  </body>
+</html>
